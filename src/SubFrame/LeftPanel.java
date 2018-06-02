@@ -10,17 +10,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class LeftPanel extends JPanel implements ActionListener {
-	private ImageIcon ic_Choose, ic_paint, ic_Circle, ic_Pen, ic_Line, ic_Rec, ic_Polygon, ic_era, ic_Text, ic_Resize,
+	private ImageIcon ic_Choose, ic_paint, ic_Circle, ic_Pen, ic_Line, ic_Rec, ic_era, ic_Text, ic_Resize,
 			ic_Gra, ic_Empty;
-	private JButton button_Choose, button_Paint, button_Pen, button_Circle, button_Line, button_Polygon, button_Rec,
+	private JButton button_Choose, button_Paint, button_Pen, button_Circle, button_Line, button_Rec,
 			button_Erager, button_Text, button_Resize, button_Gra, button_Empty;
 	private Color myColor = new Color(245, 246, 247);
 
 	public LeftPanel() {
 		this.setBackground(myColor);
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
-		ic_Polygon = new ImageIcon(new ImageIcon("resource/polygon.png").getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
+		
 		ic_Choose = new ImageIcon(new ImageIcon("resource/choice.png").getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
 		ic_Resize = new ImageIcon(new ImageIcon("resource/resize.png").getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
 		ic_paint = new ImageIcon(new ImageIcon("resource/paint.png").getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
@@ -33,7 +32,6 @@ public class LeftPanel extends JPanel implements ActionListener {
 		ic_Gra = new ImageIcon(new ImageIcon("resource/gradation.png").getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
 		ic_Empty = new ImageIcon(new ImageIcon("resource/background.png").getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
 
-		button_Polygon = new JButton(ic_Polygon);
 		button_Choose = new JButton(ic_Choose);
 		button_Resize = new JButton(ic_Resize);
 		button_Paint = new JButton(ic_paint);
@@ -81,11 +79,6 @@ public class LeftPanel extends JPanel implements ActionListener {
 		button_Rec.setBackground(Color.WHITE);
 		button_Rec.setBorderPainted(false);
 		button_Rec.setFocusPainted(false);
-		button_Polygon.setSize(50, 50);
-		button_Polygon.setName("poly");
-		button_Polygon.setBackground(Color.WHITE);
-		button_Polygon.setBorderPainted(false);
-		button_Polygon.setFocusPainted(false);
 		button_Erager.setSize(50, 50);
 		button_Erager.setName("era");
 		button_Erager.setBackground(Color.WHITE);
@@ -107,7 +100,6 @@ public class LeftPanel extends JPanel implements ActionListener {
 		button_Empty.setBorderPainted(false);
 		button_Empty.setFocusPainted(false);
 
-		button_Polygon.addActionListener(this);
 		button_Choose.addActionListener(this);
 		button_Resize.addActionListener(this);
 		button_Paint.addActionListener(this);
@@ -127,7 +119,6 @@ public class LeftPanel extends JPanel implements ActionListener {
 		this.add(button_Circle);
 		this.add(button_Line);
 		this.add(button_Rec);
-		this.add(button_Polygon);
 		this.add(button_Erager);
 		this.add(button_Text);
 		this.add(button_Gra);
@@ -159,9 +150,6 @@ public class LeftPanel extends JPanel implements ActionListener {
 			break;
 		case "rec":
 			Information.setCurrentMode(Information.MODE_DRAW_REC);
-			break;
-		case "poly":
-			Information.setCurrentMode(Information.MODE_DRAW_POLYGON);
 			break;
 		case "era":
 			Information.setCurrentMode(Information.MODE_ERAGE);

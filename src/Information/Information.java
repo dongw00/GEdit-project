@@ -11,7 +11,6 @@ public class Information {
 	public static final int PROGRAM_HEIGHT = 1080;
 
 	public static final int MODE_DRAW_REC = 1;
-	public static final int MODE_DRAW_POLYGON = 2;
 	public static final int MODE_DRAW_CIRCLE = 3;
 	public static final int MODE_DRAW_LINE = 4;
 	public static final int MODE_ERAGE = 5;
@@ -95,8 +94,6 @@ public class Information {
 		switch (CurrentMode) {
 		case MODE_DRAW_REC:
 			return "사각형 그리기";
-		case MODE_DRAW_POLYGON:
-			return "다각형 그리기";
 		case MODE_DRAW_CIRCLE:
 			return "원 그리기";
 		case MODE_DRAW_LINE:

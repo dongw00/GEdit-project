@@ -4,7 +4,6 @@ import Frame.MainFrame;
 import Information.Information;
 import SubFrame.StackFrame;
 import figure.*;
-import figure.Polygon;
 import figure.Rectangle;
 
 import javax.swing.*;
@@ -198,26 +197,6 @@ public class DrawPanel extends JPanel implements MouseMotionListener, MouseListe
 			Line line = new Line(e.getX(), e.getY(), e.getX(), e.getY());
 			figureSet.addElement(line);
 			break;
-		case Information.MODE_DRAW_POLYGON:
-			if (count != 10) {
-				if (e.getClickCount() == 2) {
-					Polygon polygon = new Polygon(X_point, Y_point, count);
-					figureSet.addElement(polygon);
-					count = 0;
-				} else {
-					System.out.println(String.format("%d %d", e.getX(), e.getY()));
-					point.add(new Point(e.getX(), e.getY()));
-					X_point[count] = e.getX();
-					Y_point[count] = e.getY();
-					count++;
-				}
-			} else {
-				Polygon polygon = new Polygon(X_point, Y_point, count);
-				figureSet.addElement(polygon);
-				count = 0;
-			}
-			break;
-
 		case Information.MODE_ERAGE:
 			Eraser eraser = new Eraser(e.getX(), e.getY());
 			figureSet.addElement(eraser);
