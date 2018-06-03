@@ -23,16 +23,14 @@ public class StackFrame extends JInternalFrame implements ListSelectionListener 
 		super("", true, false, false, true);
 
 		listModel = new DefaultListModel<>();
-		// create the list
 		stackList = new JList<>(listModel);
 		stackList.addListSelectionListener(this);
 		JScrollPane listScrollPane = new JScrollPane(stackList);
 		this.getContentPane().add(listScrollPane, BorderLayout.CENTER);
 
-		JButton DelButton = new JButton("Delete");
+		JButton DelButton = new JButton("지우기");
 		DelButton.addActionListener(arg0 -> {
 			DrawPanel current = Information.getCurrentJPanel();
-
 			if (current == null) {
 				JOptionPane.showMessageDialog(null, "Error : Can't find current Jpanel", "ERROR",
 						JOptionPane.ERROR_MESSAGE);
@@ -43,10 +41,9 @@ public class StackFrame extends JInternalFrame implements ListSelectionListener 
 			}
 		});
 
-		JButton backButton = new JButton("Undo");
+		JButton backButton = new JButton("<");
 
 		backButton.addActionListener(new ActionListener() {
-
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				if (Information.getCurrentJPanel() != null) {
@@ -55,7 +52,7 @@ public class StackFrame extends JInternalFrame implements ListSelectionListener 
 			}
 		});
 
-		JButton frontButton = new JButton("Redo");
+		JButton frontButton = new JButton(">");
 
 		frontButton.addActionListener(arg0 -> {
 			if (Information.getCurrentJPanel() != null) {
@@ -63,7 +60,7 @@ public class StackFrame extends JInternalFrame implements ListSelectionListener 
 			}
 		});
 
-		JButton clearButton = new JButton("Clear");
+		JButton clearButton = new JButton("모두 삭제");
 
 		clearButton.addActionListener(arg0 -> {
 			DrawPanel current = Information.getCurrentJPanel();

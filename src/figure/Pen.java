@@ -15,14 +15,11 @@ public class Pen extends PenType {
 
     @Override
     public void drawFigure(Graphics2D g) {
-        // TODO Auto-generated method stub
-
         g.setStroke(new BasicStroke(strokeSize, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND));
         g.setPaint(figurePaint);
         for (PenTypeTracePoint current : points) {
             g.drawLine(current.prePoints.x, current.prePoints.y, current.LastPoints.x, current.LastPoints.y);
         }
-
     }
 
     @Override
@@ -38,5 +35,4 @@ public class Pen extends PenType {
         obj.points = (ArrayList<PenTypeTracePoint>) points.clone();
         return obj;
     }
-
 }

@@ -11,9 +11,9 @@ import java.awt.event.ActionListener;
 
 public class LeftPanel extends JPanel implements ActionListener {
 	private ImageIcon ic_Choose, ic_paint, ic_Circle, ic_Pen, ic_Line, ic_Rec, ic_era, ic_Text, ic_Resize,
-			ic_Gra, ic_Empty;
+			ic_Empty;
 	private JButton button_Choose, button_Paint, button_Pen, button_Circle, button_Line, button_Rec,
-			button_Erager, button_Text, button_Resize, button_Gra, button_Empty;
+			button_Erager, button_Text, button_Resize, button_Empty;
 	private Color myColor = new Color(245, 246, 247);
 
 	public LeftPanel() {
@@ -29,7 +29,6 @@ public class LeftPanel extends JPanel implements ActionListener {
 		ic_Rec = new ImageIcon(new ImageIcon("resource/square.png").getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
 		ic_era = new ImageIcon(new ImageIcon("resource/eraser.png").getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
 		ic_Text = new ImageIcon(new ImageIcon("resource/text.png").getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
-		ic_Gra = new ImageIcon(new ImageIcon("resource/gradation.png").getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
 		ic_Empty = new ImageIcon(new ImageIcon("resource/background.png").getImage().getScaledInstance(55, 55, Image.SCALE_SMOOTH));
 
 		button_Choose = new JButton(ic_Choose);
@@ -41,7 +40,6 @@ public class LeftPanel extends JPanel implements ActionListener {
 		button_Rec = new JButton(ic_Rec);
 		button_Erager = new JButton(ic_era);
 		button_Text = new JButton(ic_Text);
-		button_Gra = new JButton(ic_Gra);
 		button_Empty = new JButton(ic_Empty);
 
 		button_Choose.setName("choose");
@@ -89,11 +87,6 @@ public class LeftPanel extends JPanel implements ActionListener {
 		button_Text.setBackground(Color.WHITE);
 		button_Text.setBorderPainted(false);
 		button_Text.setFocusPainted(false);
-		button_Gra.setSize(50, 50);
-		button_Gra.setName("gra");
-		button_Gra.setBackground(Color.WHITE);
-		button_Gra.setBorderPainted(false);
-		button_Gra.setFocusPainted(false);
 		button_Empty.setSize(50, 50);
 		button_Empty.setName("Empty");
 		button_Empty.setBackground(Color.WHITE);
@@ -109,7 +102,6 @@ public class LeftPanel extends JPanel implements ActionListener {
 		button_Rec.addActionListener(this);
 		button_Erager.addActionListener(this);
 		button_Text.addActionListener(this);
-		button_Gra.addActionListener(this);
 		button_Empty.addActionListener(this);
 
 		this.add(button_Choose);
@@ -121,7 +113,6 @@ public class LeftPanel extends JPanel implements ActionListener {
 		this.add(button_Rec);
 		this.add(button_Erager);
 		this.add(button_Text);
-		this.add(button_Gra);
 		this.add(button_Empty);
 	}
 
@@ -156,10 +147,6 @@ public class LeftPanel extends JPanel implements ActionListener {
 			break;
 		case "text":
 			Information.setCurrentMode(Information.MODE_TEXT);
-			break;
-		case "gra":
-			Information.setCurrentMode(Information.MODE_GRA);
-			Information.setGra(Information.getBeforeColor(), Information.getCurrentColor());
 			break;
 		case "Empty":
 			Information.setCurrentMode(Information.MODE_EMPTY);

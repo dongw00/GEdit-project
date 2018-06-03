@@ -21,10 +21,6 @@ public class DrawPanel extends JPanel implements MouseMotionListener, MouseListe
 	private Stack<Vector<Figure>> figureStack = new Stack<Vector<Figure>>();
 	private Stack<Vector<Figure>> figureCancelStack = new Stack<Vector<Figure>>();
 	private int dragStartX, dragStartY;
-	private Vector<Point> point = new Vector<>();
-	private int[] X_point = new int[10];
-	private int[] Y_point = new int[10];
-	private int count = 0;
 
 	public DrawPanel() {
 		Information.setCurrentpanel(this);
@@ -106,18 +102,6 @@ public class DrawPanel extends JPanel implements MouseMotionListener, MouseListe
 				Information.backgroundColor = Information.getCurrentColor();
 				repaint();
 			}
-
-		} else if (Information.getCurrentMode() == Information.MODE_GRA) {
-
-			if (Information.getCurrentFigure() != null) {
-				Information.setGra(Information.getBeforeColor(), Information.getCurrentColor());
-				Information.getCurrentFigure().setFigurePaint(Information.getGra());
-				repaint();
-			} else {
-				this.setBackground(Information.getCurrentColor());
-				repaint();
-			}
-
 		}
 	}
 
@@ -149,26 +133,10 @@ public class DrawPanel extends JPanel implements MouseMotionListener, MouseListe
 				this.setBackground(Information.getCurrentColor());
 				repaint();
 			}
-		}
-
-		else if (Information.getCurrentMode() == Information.MODE_GRA) {
-
-			if (Information.getCurrentFigure() != null) {
-				Information.setGra(Information.getBeforeColor(), Information.getCurrentColor());
-				Information.getCurrentFigure().setFigurePaint(Information.getGra());
-				repaint();
-			} else {
-			}
-
-		}
-
-		else if (Information.getCurrentMode() == Information.MODE_RESIZE) {
-
+		} else if (Information.getCurrentMode() == Information.MODE_RESIZE) {
 		} else {
 			drawFigureFunc(e);
-
 		}
-
 	}
 
 	@Override
@@ -257,13 +225,11 @@ public class DrawPanel extends JPanel implements MouseMotionListener, MouseListe
 		figureCancelStack.clear();
 		figureSet.remove(idx);
 		StackFrame.getInstance().setListItems(figureSet);
-
 		repaint();
 	}
 
 	public void popStackTrace() {
 		if (figureStack.isEmpty()) {
-
 			figureCancelStack.push((Vector<Figure>) figureSet.clone());
 			figureSet.clear();
 			repaint();
@@ -272,9 +238,7 @@ public class DrawPanel extends JPanel implements MouseMotionListener, MouseListe
 
 			return;
 		} else {
-
 			figureCancelStack.push((Vector<Figure>) figureSet.clone());
-
 			if (figureSet.equals(figureStack.peek()))
 				figureStack.pop();
 			if (!figureStack.empty()) {
@@ -286,7 +250,6 @@ public class DrawPanel extends JPanel implements MouseMotionListener, MouseListe
 			StackFrame.getInstance().setListItems(figureSet);
 			repaint();
 		}
-
 	}
 
 	public void popStackCaneStack() {
@@ -296,7 +259,6 @@ public class DrawPanel extends JPanel implements MouseMotionListener, MouseListe
 		} else {
 			figureStack.push((Vector<Figure>) figureSet.clone());
 			figureSet = (Vector<Figure>) figureCancelStack.pop().clone();
-
 			StackFrame.getInstance().setListItems(figureSet);
 			repaint();
 		}

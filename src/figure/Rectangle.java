@@ -3,17 +3,12 @@ package figure;
 import java.awt.*;
 
 public class Rectangle extends RecType {
-
-
     public Rectangle(int startX, int startY, int width, int height) {
         super(startX, startY, width, height);
-
     }
 
     @Override
     public void drawFigure(Graphics2D g) {
-        // TODO Auto-generated method stub
-
         g.setPaint(figurePaint);
         g.fillRect(X, Y, width, height);
         g.setColor(lineColor);
@@ -39,6 +34,4 @@ public class Rectangle extends RecType {
 
         return obj;
     }
-
-
 }

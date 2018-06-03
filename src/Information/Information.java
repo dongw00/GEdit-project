@@ -8,19 +8,18 @@ import java.awt.*;
 public class Information {
 	public static final String PROGRAM_NAME = "시바 그림판";
 	public static final int PROGRAM_WIDTH = 1600;
-	public static final int PROGRAM_HEIGHT = 1080;
+	public static final int PROGRAM_HEIGHT = 1000;
 
 	public static final int MODE_DRAW_REC = 1;
-	public static final int MODE_DRAW_CIRCLE = 3;
-	public static final int MODE_DRAW_LINE = 4;
-	public static final int MODE_ERAGE = 5;
-	public static final int MODE_TEXT = 6;
-	public static final int MODE_MOVE = 7;
-	public static final int MODE_PEN = 8;
-	public static final int MODE_PAINT = 9;
-	public static final int MODE_RESIZE = 10;
-	public static final int MODE_GRA = 11;
-	public static final int MODE_EMPTY = 12;
+	public static final int MODE_DRAW_CIRCLE = 2;
+	public static final int MODE_DRAW_LINE = 3;
+	public static final int MODE_ERAGE = 4;
+	public static final int MODE_TEXT = 5;
+	public static final int MODE_MOVE = 6;
+	public static final int MODE_PEN = 7;
+	public static final int MODE_PAINT = 8;
+	public static final int MODE_RESIZE = 9;
+	public static final int MODE_EMPTY = 10;
 
 	public static final int IS_EMPTY = -1;
 	public static final int IS_ERAGER = 0;
@@ -38,7 +37,6 @@ public class Information {
 	private static int CurrentMode = 15;
 	private static Color currentColor = new Color(0, 0, 0);
 	private static Color beforeColor = new Color(0, 0, 0);
-	private static GradientPaint gra;
 
 	private static Color lineColor = new Color(0, 0, 0);
 
@@ -110,14 +108,11 @@ public class Information {
 			return "채우기";
 		case MODE_RESIZE:
 			return "리사이즈 모드";
-		case MODE_GRA:
-			return "그라데이션 모드";
 		case MODE_EMPTY:
 			return "도형 선택 취소 모드";
 		default:
 			return "선택된 모드가 없습니다.";
 		}
-
 	}
 
 	public static int getCurrentMode() {
@@ -136,22 +131,8 @@ public class Information {
 		return currentColor;
 	}
 
-	public static GradientPaint getGra() {
-		return gra;
-	}
-
 	public static Color getLineColor() {
 		return lineColor;
-	}
-
-	public static void setGra(Color A, Color B) {
-		gra = new GradientPaint(100, 100, A, 200, 200, B, true);
-		if (Information.getCurrentMode() == Information.MODE_GRA) {
-			if (Information.getCurrentFigure() != null) {
-				Information.getCurrentFigure().setFigurePaint(gra);
-				Information.getCurrentJPanel().repaint();
-			}
-		}
 	}
 
 	public static void setCurrentColor(int R, int G, int B, int A) {

@@ -9,7 +9,6 @@ import javax.swing.event.ChangeListener;
 import java.awt.*;
 
 public class GetSpecifcColorInternalFrame extends JInternalFrame implements ChangeListener {
-
 	JColorChooser colorChooser;
 
 	public GetSpecifcColorInternalFrame() {
@@ -17,11 +16,9 @@ public class GetSpecifcColorInternalFrame extends JInternalFrame implements Chan
 		setBackground(Color.DARK_GRAY);
 		setSize(600, 400);
 		setVisible(true);
-
 		colorChooser = new JColorChooser(Information.getCurrentColor());
 		colorChooser.getSelectionModel().addChangeListener(this);
 		this.add(colorChooser);
-
 	}
 
 	@Override
@@ -29,7 +26,5 @@ public class GetSpecifcColorInternalFrame extends JInternalFrame implements Chan
 		Color newColor = colorChooser.getColor();
 		Information.setCurrentColor(newColor.getRed(), newColor.getGreen(), newColor.getBlue(), newColor.getAlpha());
 		MainFrame.getInstance().setBottomPanel(newColor);
-
 	}
-
 }
